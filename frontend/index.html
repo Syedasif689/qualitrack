@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QualiTrack helps teams understand software quality and prioritize improvements.">
+  <title>QualiTrack | Software Quality Analytics</title>
+
+  <!-- Apply saved / OS theme before paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        var theme = (saved === 'light' || saved === 'dark')
+          ? saved
+          : (prefersLight ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <!-- The logo IS the drawer trigger -->
+    <a href="#home" class="brand" id="brandToggle"
+       aria-label="Toggle navigation"
+       aria-controls="navLinks"
+       aria-expanded="false">
+      <span class="brand-icon">Q</span>
+      <span>Quali<span class="brand-accent">Track</span></span>
+    </a>
+
+    <div class="nav-actions">
+      <!-- ============ THEME TOGGLE (morphing sun ⇄ moon) ============ -->
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Switch to light theme"
+        aria-pressed="false"
+        title="Toggle theme"
+      >
+        <span class="theme-icon-wrap">
+          <svg class="theme-morph" viewBox="0 0 24 24" aria-hidden="true">
+            <defs>
+              <mask id="moonMask">
+                <rect x="0" y="0" width="24" height="24" fill="white"/>
+                <circle class="moon-bite" cx="12" cy="12" r="5" fill="black"/>
+              </mask>
+            </defs>
+
+            <!-- Sun rays (fade + scale to 0 when moon) -->
+            <g class="sun-rays">
+              <line x1="12" y1="2"    x2="12" y2="4"/>
+              <line x1="12" y1="20"   x2="12" y2="22"/>
+              <line x1="2"  y1="12"   x2="4"  y2="12"/>
+              <line x1="20" y1="12"   x2="22" y2="12"/>
+              <line x1="4.93" y1="4.93"  x2="6.34" y2="6.34"/>
+              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+              <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>
+              <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+            </g>
+
+            <!-- Main circle — cut by the mask to become a crescent -->
+            <circle class="sun-moon-core" cx="12" cy="12" r="5" mask="url(#moonMask)"/>
+          </svg>
+        </span>
+      </button>
+
+      <div class="nav-auth">
+        <a href="login.html" class="nav-login">Sign in</a>
+        <a href="register.html" class="nav-cta">
+          Get started <span>↗</span>
+        </a>
+      </div>
+
+      <!-- Secondary trigger (mobile / tablet affordance) -->
+      <button class="menu-toggle" id="menuToggle" type="button"
+              aria-label="Toggle navigation" aria-controls="navLinks" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <!-- ============ NAV DRAWER (outside the header so `position: fixed` is viewport-relative) ============ -->
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <nav class="nav-drawer" id="navLinks" aria-label="Main navigation">
+    <a href="#home" class="active">Home</a>
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How it works</a>
+  </nav>
+
+  <main>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero container" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">
+          <span class="status-dot"></span> SOFTWARE QUALITY, MADE CLEAR
+        </div>
+        <h1>
+          Build better software.<br>
+          <span class="gradient-text">One insight at a time.</span>
+        </h1>
+        <p class="hero-description">
+          Understand your code quality, identify potential issues, and discover actionable
+          improvements — all from one software analytics dashboard.
+        </p>
+        <div class="hero-actions">
+          <a href="register.html" class="button button-primary">
+            Analyze your project <span>→</span>
+          </a>
+          <a href="#how-it-works" class="button button-secondary">
+            See how it works
+          </a>
+        </div>
+        <div class="hero-trust">
+          <span class="trust-icon">✓</span> Tool-driven analysis
+          <span class="trust-divider">·</span>
+          Explainable recommendations
+        </div>
+      </div>
+
+      <div class="dashboard-wrap" aria-label="Animated illustrative dashboard preview">
+        <div class="dashboard-glow"></div>
+        <div class="dashboard-card" id="dashboardCard" aria-live="polite">
+          <div class="dashboard-top">
+            <div class="window-controls"><span></span><span></span><span></span></div>
+            <span class="preview-label">LIVE DASHBOARD PREVIEW</span>
+          </div>
+
+          <div class="dashboard-heading">
+            <div>
+              <p class="muted-label">PROJECT OVERVIEW</p>
+              <h3 id="projectName">Payment Service</h3>
+              <p class="project-meta" id="projectLanguage">Java · Spring Boot</p>
+            </div>
+            <span class="demo-badge">DEMO DATA</span>
+          </div>
+
+          <div class="score-panel">
+            <div>
+              <p class="muted-label">OVERALL HEALTH</p>
+              <div class="score-number">
+                <span id="qualityScore">82</span><span>/100</span>
+              </div>
+              <p class="score-caption">
+                <span class="score-indicator">●</span>
+                <span id="scoreCaption">Illustrative quality score</span>
+              </p>
+            </div>
+            <div class="score-ring">
+              <svg viewBox="0 0 120 120" role="img" aria-label="Illustrative project quality score">
+                <circle class="ring-track" cx="60" cy="60" r="48"></circle>
+                <circle class="ring-progress" id="scoreRing" cx="60" cy="60" r="48"></circle>
+              </svg>
+              <span id="scorePercentage">82%</span>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric-card">
+              <span class="metric-icon bug-icon">!</span>
+              <p>Bugs</p>
+              <strong id="bugCount">12</strong>
+              <span class="metric-note">Sample count</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-icon security-icon">⌑</span>
+              <p>Security</p>
+              <strong id="securityCount">3</strong>
+              <span class="metric-note">Sample findings</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-icon smell-icon">⌘</span>
+              <p>Code smells</p>
+              <strong id="smellCount">28</strong>
+              <span class="metric-note">Sample count</span>
+            </div>
+          </div>
+
+          <div class="recommendation">
+            <div class="recommendation-icon">✦</div>
+            <div>
+              <strong id="recommendationTitle">Recommended next step</strong>
+              <p id="recommendationText">Review high-priority findings and improve maintainability.</p>
+            </div>
+            <span class="recommendation-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-tag">WHAT YOU GET</span>
+          <h2>From code metrics to <span class="gradient-text">clear decisions.</span></h2>
+          <p>Understand your software project's quality and identify what to improve next.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon purple">⌕</div>
+            <h3>Code Quality Analysis</h3>
+            <p>Use integrated analysis tools to identify bugs, code smells, and maintainability concerns.</p>
+            <a href="#how-it-works">Explore analysis →</a>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon blue">▥</div>
+            <h3>Quality Insights</h3>
+            <p>Turn supported metrics into understandable scores, visual summaries, and project health indicators.</p>
+            <a href="#how-it-works">Explore insights →</a>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon green">✳</div>
+            <h3>Actionable Improvements</h3>
+            <p>Receive evidence-based, rule-driven recommendations that help prioritize your next steps.</p>
+            <a href="#how-it-works">Explore improvements →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORKFLOW ================= -->
+    <section class="workflow-section container" id="how-it-works">
+      <div class="section-heading">
+        <span class="section-tag">SIMPLE WORKFLOW</span>
+        <h2>A clearer path to <span class="gradient-text">better software.</span></h2>
+        <p>Three steps take you from a repository to a practical improvement plan.</p>
+      </div>
+      <div class="workflow-grid">
+        <article class="workflow-step">
+          <span class="step-number">01</span>
+          <div class="workflow-icon">⌘</div>
+          <h3>Connect</h3>
+          <p>Provide a supported GitHub repository that you own or are authorized to analyze.</p>
+        </article>
+        <article class="workflow-step">
+          <span class="step-number">02</span>
+          <div class="workflow-icon">◎</div>
+          <h3>Analyze</h3>
+          <p>Collect available metrics and findings from compatible analysis tools.</p>
+        </article>
+        <article class="workflow-step">
+          <span class="step-number">03</span>
+          <div class="workflow-icon">↗</div>
+          <h3>Improve</h3>
+          <p>Review quality insights and prioritize rule-driven recommendations.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= GET STARTED ================= -->
+    <section class="get-started-section" id="get-started">
+      <div class="get-started-card">
+        <span class="section-tag">YOUR NEXT STEP</span>
+        <h2>Make software quality easier to understand.</h2>
+        <p>Start with a repository. Discover what is working and what needs attention.</p>
+        <a href="register.html" class="button button-primary" id="startButton">
+          Get started <span>→</span>
+        </a>
+        <p class="demo-notice" id="startMessage" aria-live="polite">
+          Frontend preview · Analysis backend not connected yet
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <a href="#home" class="brand">
+      <span class="brand-icon">Q</span>
+      <span>Quali<span class="brand-accent">Track</span></span>
+    </a>
+    <p>Software Quality Analytics &amp; Continuous Improvement Platform</p>
+    <span class="footer-copy">© <span id="currentYear"></span> QualiTrack</span>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

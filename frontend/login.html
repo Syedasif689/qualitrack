@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in to QualiTrack, your software quality analytics platform.">
+  <title>Sign in | QualiTrack</title>
+
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem("theme");
+        const prefersLight = window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: light)").matches;
+        document.documentElement.setAttribute(
+          "data-theme",
+          saved === "light" || saved === "dark"
+            ? saved
+            : (prefersLight ? "light" : "dark")
+        );
+      } catch (_) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <main class="auth-page">
+    <a class="back-home" href="index.html" aria-label="Back to QualiTrack homepage">
+      <span aria-hidden="true">←</span> Back to home
+    </a>
+
+    <section class="auth-layout" aria-labelledby="loginTitle">
+      <div class="auth-intro">
+        <a href="index.html" class="brand" aria-label="QualiTrack home">
+          <span class="brand-icon">Q</span>
+          <span>Quali<span class="brand-accent">Track</span></span>
+        </a>
+
+        <div class="intro-copy">
+          <span class="eyebrow"><span class="status-dot"></span> SOFTWARE QUALITY, MADE CLEAR</span>
+          <h1>Welcome back.<br><span class="gradient-text">Let's improve together.</span></h1>
+          <p>Sign in to review your projects, understand quality metrics, and turn analysis into meaningful improvements.</p>
+        </div>
+
+        <div class="intro-note">
+          <span class="note-icon" aria-hidden="true">✦</span>
+          <span>Clear insights. Explainable recommendations. Better software.</span>
+        </div>
+      </div>
+
+      <div class="auth-card">
+        <div class="card-heading">
+          <div>
+            <p class="card-kicker">YOUR WORKSPACE</p>
+            <h2 id="loginTitle">Sign in to QualiTrack</h2>
+            <p class="card-subtitle">Enter your account details to continue.</p>
+          </div>
+          <span class="secure-mark" aria-label="Secure sign in">⌑</span>
+        </div>
+
+        <button class="google-button" id="googleButton" type="button">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.73 7.18l7.65 5.93c4.47-4.13 7.12-10.2 7.12-17.58z"/>
+            <path fill="#FBBC05" d="M10.53 28.59A14.4 14.4 0 0 1 9.75 24c0-1.59.27-3.13.76-4.59l-7.98-6.2A23.9 23.9 0 0 0 0 24c0 3.88.93 7.55 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.9-5.87l-7.65-5.93c-2.12 1.42-4.84 2.27-8.25 2.27-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <div class="separator"><span>OR CONTINUE WITH EMAIL</span></div>
+
+        <form id="loginForm" novalidate>
+          <div class="form-field">
+            <label for="email">Email address</label>
+            <div class="input-wrap">
+              <span class="input-icon" aria-hidden="true">✉</span>
+              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+            </div>
+            <small class="field-error" id="emailError"></small>
+          </div>
+
+          <div class="form-field">
+            <div class="label-row">
+              <label for="password">Password</label>
+              <a href="forgot-password.html" class="text-link">Forgot password?</a>
+            </div>
+            <div class="input-wrap">
+              <span class="input-icon" aria-hidden="true">⌑</span>
+              <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+              <button class="password-toggle" id="passwordToggle" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+            </div>
+            <small class="field-error" id="passwordError"></small>
+          </div>
+
+          <label class="remember-row">
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <span class="custom-check" aria-hidden="true"></span>
+            <span>Remember me</span>
+          </label>
+
+          <button class="submit-button" type="submit">
+            <span>Sign in</span><span aria-hidden="true">→</span>
+          </button>
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="signup-prompt">Don't have an account? <a href="register.html" class="text-link strong-link">Create account</a></p>
+        <p class="terms-note">By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+      </div>
+    </section>
+
+    <footer class="auth-footer">
+      <span>© <span id="currentYear"></span> QualiTrack</span>
+      <span>Software Quality Analytics &amp; Continuous Improvement Platform</span>
+    </footer>
+  </main>
+  <script src="js/auth.js" defer></script>
+</body>
+</html>
