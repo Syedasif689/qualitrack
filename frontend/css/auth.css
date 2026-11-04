@@ -469,6 +469,7 @@ button, input { font: inherit; }
   padding-top: 30px;
 }
 
+
 @media (max-width: 850px) {
   .auth-layout {
     grid-template-columns: 1fr;
@@ -530,3 +531,175 @@ button, input { font: inherit; }
 [data-theme="light"] .remember-row { color: #56607d; }
 [data-theme="light"] .intro-note { color: #3a4560; }
 [data-theme="light"] .auth-footer { color: #69738d; }
+
+/* =========================================================
+   QUALITRACK — FORGOT PASSWORD PAGE
+   ========================================================= */
+
+.forgot-card {
+  max-width: 470px;
+  margin: 0 auto;
+}
+
+.forgot-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.forgot-icon {
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 20px;
+  border-radius: 19px;
+  color: #b9a9ff;
+  font-size: 1.8rem;
+  background: linear-gradient(
+    135deg,
+    rgba(154, 123, 255, .18),
+    rgba(91, 157, 255, .12)
+  );
+  border: 1px solid rgba(154, 123, 255, .28);
+  box-shadow: 0 10px 35px rgba(103, 104, 255, .12);
+}
+
+.forgot-heading h2 {
+  font-size: 1.7rem;
+  letter-spacing: -.8px;
+  margin-bottom: 10px;
+}
+
+.forgot-heading p {
+  color: var(--muted);
+  font-size: .85rem;
+  line-height: 1.7;
+}
+
+.forgot-submit {
+  margin-top: 8px;
+}
+
+.forgot-message {
+  min-height: 20px;
+  margin-top: 13px;
+  text-align: center;
+  font-size: .76rem;
+  line-height: 1.5;
+}
+
+.forgot-message.success {
+  color: var(--green);
+}
+
+.forgot-message.error {
+  color: #ff929c;
+}
+
+.forgot-footer {
+  text-align: center;
+  margin-top: 23px;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.forgot-footer a {
+  color: #b5a1ff;
+  font-weight: 800;
+  margin-left: 4px;
+}
+
+.forgot-footer a:hover {
+  color: #d0c4ff;
+  text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+  .forgot-card {
+    padding: 27px 21px;
+  }
+
+  .forgot-heading h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* =========================================================
+   QUALITRACK — RESET PASSWORD
+   ========================================================= */
+
+.password-strength {
+  margin-top: 12px;
+}
+
+.strength-track {
+  height: 5px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .09);
+}
+
+.strength-track span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .3s ease, background .3s ease;
+}
+
+#strengthText {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: .7rem;
+}
+
+.password-rules {
+  padding: 13px 15px;
+  margin: 5px 0 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .025);
+}
+
+.password-rules p {
+  color: #dce1f2;
+  font-size: .76rem;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.password-rules ul {
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: .7rem;
+  line-height: 1.9;
+}
+
+#resetMessage {
+  min-height: 20px;
+  margin-top: 12px;
+  text-align: center;
+  font-size: .76rem;
+  line-height: 1.5;
+}
+
+#resetMessage.success {
+  color: var(--green);
+}
+
+#resetMessage.error {
+  color: #ff929c;
+}
+
+[data-theme="light"] .password-rules p {
+  color: #18213a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strength-track span {
+    transition: none;
+  }
+}
+
