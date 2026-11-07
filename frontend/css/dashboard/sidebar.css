@@ -1,0 +1,150 @@
+
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 17px;
+    background: #0c1222;
+    border-right: 1px solid var(--border);
+    transition: transform .3s ease;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 8px 30px;
+}
+
+.brand-icon {
+    width: 37px;
+    height: 37px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #9a7bff, #5b9dff);
+    color: white;
+    font-weight: 900;
+}
+
+.brand-name {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.brand-name span {
+    color: #a995ff;
+}
+
+.workspace-label {
+    padding: 0 10px;
+    margin-bottom: 12px;
+    color: #77829f;
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.secondary-label {
+    margin-top: 30px;
+}
+
+.sidebar-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-item {
+    width: 100%;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0 12px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: #a2abc3;
+    text-align: left;
+    font-size: .83rem;
+    transition: .2s;
+}
+
+.nav-icon {
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.nav-item:hover {
+    background: rgba(154, 123, 255, .08);
+    color: white;
+}
+
+.nav-item.active {
+    background: rgba(154, 123, 255, .13);
+    border-color: rgba(154, 123, 255, .2);
+    color: #c2b3ff;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-plan {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 13px 10px;
+    margin-bottom: 14px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, .025);
+}
+
+.plan-icon {
+    color: #b5a1ff;
+    font-size: 1.3rem;
+}
+
+.sidebar-plan strong {
+    font-size: .78rem;
+}
+
+.sidebar-plan p {
+    color: var(--muted);
+    font-size: .65rem;
+}
+
+.logout-item {
+    color: #ff929c;
+}
+
+.sidebar-close {
+    display: none;
+    margin-left: auto;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1.5rem;
+}
+
+@media (max-width: 850px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-close {
+        display: block;
+    }
+}

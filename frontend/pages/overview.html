@@ -1,0 +1,127 @@
+
+<section class="overview-page">
+
+    <!-- Welcome -->
+    <div class="overview-welcome">
+        <div>
+            <p class="welcome-label">DASHBOARD OVERVIEW</p>
+            <h1>Welcome back!</h1>
+            <p class="welcome-description">
+                Monitor your software quality and track continuous improvement.
+            </p>
+        </div>
+
+        <button class="primary-action" id="startAnalysisBtn">
+            + Analyze Repository
+        </button>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="overview-stats">
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <span>Total Projects</span>
+                <span class="stat-icon purple">▣</span>
+            </div>
+            <h2 id="totalProjects">0</h2>
+            <p>Projects registered</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <span>Analyses Completed</span>
+                <span class="stat-icon blue">⌕</span>
+            </div>
+            <h2 id="totalAnalyses">0</h2>
+            <p>Completed analyses</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <span>Critical Issues</span>
+                <span class="stat-icon red">!</span>
+            </div>
+            <h2 id="criticalIssues">0</h2>
+            <p>Issues requiring attention</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <span>Quality Score</span>
+                <span class="stat-icon green">★</span>
+            </div>
+            <h2 id="qualityScore">—</h2>
+            <p>Overall quality rating</p>
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="overview-grid">
+
+        <div class="overview-panel quality-panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>Software Quality</h3>
+                    <p>Overall project quality assessment</p>
+                </div>
+            </div>
+
+            <div class="quality-empty">
+                <div class="quality-circle">
+                    <span>—</span>
+                </div>
+                <h3>No analysis available</h3>
+                <p>Analyze your first repository to view its quality score.</p>
+            </div>
+        </div>
+
+        <div class="overview-panel activity-panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>Recent Activity</h3>
+                    <p>Your latest repository analyses</p>
+                </div>
+            </div>
+
+            <div class="activity-empty">
+                <div class="empty-icon">◷</div>
+                <h3>No recent activity</h3>
+                <p>Your analysis history will appear here.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="overview-panel quick-panel">
+        <div class="panel-heading">
+            <div>
+                <h3>Quick Actions</h3>
+                <p>Get started with QualiTrack</p>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <button class="quick-action" id="quickAnalyze">
+                <span>⌕</span>
+                <div>
+                    <strong>Analyze Repository</strong>
+                    <small>Start a new quality analysis</small>
+                </div>
+                <span class="action-arrow">→</span>
+            </button>
+
+            <button class="quick-action" id="quickMetrics">
+                <span>▥</span>
+                <div>
+                    <strong>View Quality Metrics</strong>
+                    <small>Explore software quality measurements</small>
+                </div>
+                <span class="action-arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+</section>
