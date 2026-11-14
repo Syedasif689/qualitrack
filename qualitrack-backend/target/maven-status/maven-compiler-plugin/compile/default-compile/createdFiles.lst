@@ -1,0 +1,15 @@
+com\qualitrack\QualiTrackApplication.class
+com\qualitrack\dto\response\UserResponse.class
+com\qualitrack\repository\UserRepository.class
+com\qualitrack\dto\response\AuthResponse.class
+com\qualitrack\security\SecurityConfig.class
+com\qualitrack\entity\User.class
+com\qualitrack\controller\AuthController.class
+com\qualitrack\dto\request\RegisterRequest.class
+com\qualitrack\security\JwtAuthenticationFilter.class
+com\qualitrack\entity\Role.class
+com\qualitrack\service\AuthService.class
+com\qualitrack\dto\request\LoginRequest.class
+com\qualitrack\controller\TestController.class
+com\qualitrack\config\PasswordConfig.class
+com\qualitrack\security\JwtService.class
