@@ -1,0 +1,258 @@
+
+<section class="analysis-page">
+
+    <!-- Page Header -->
+    <div class="analysis-welcome">
+        <div>
+            <p class="welcome-label">SOFTWARE QUALITY ANALYSIS</p>
+            <h1>Analyze Repository</h1>
+            <p class="analysis-description">
+                Connect your GitHub repository or upload your project
+                to evaluate its software quality.
+            </p>
+        </div>
+    </div>
+
+    <!-- Repository Source Panel -->
+    <div class="analysis-panel">
+
+        <h2>Choose Repository Source</h2>
+
+        <p class="panel-description">
+            Select how you want to provide your project.
+        </p>
+
+        <!-- Source Tabs -->
+        <div class="source-tabs">
+
+            <button class="source-tab active" data-source="github">
+                <i class="fa-brands fa-github"></i>
+                GitHub Repository
+            </button>
+
+            <button class="source-tab" data-source="upload">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                ZIP Upload
+            </button>
+
+        </div>
+
+        <!-- GITHUB SOURCE -->
+        <div class="source-content" id="githubSource">
+
+            <div class="github-connect-card">
+
+                <!-- GitHub Header -->
+                <div class="github-connect-header">
+
+                    <div class="github-logo">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+
+                    <div>
+                        <h3>Connect your GitHub Account</h3>
+
+                        <p>
+                            Access your repositories directly from GitHub
+                            without manually copying repository links.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Connect Button -->
+                <button
+                    type="button"
+                    id="connectGithubBtn"
+                    class="github-connect-button">
+
+                    <i class="fa-brands fa-github"></i>
+                    Connect GitHub
+
+                </button>
+
+                <p id="githubStatus" class="github-status">
+                    Your GitHub account is not connected.
+                </p>
+
+                <!-- Divider -->
+                <div class="github-divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- Manual Repository URL -->
+                <div class="manual-repository">
+
+                    <label for="repositoryUrl">
+                        Enter Public Repository URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="repositoryUrl"
+                        placeholder="https://github.com/username/repository"
+                    >
+
+                    <small>
+                        Alternatively, paste the URL of a public
+                        GitHub repository.
+                    </small>
+
+                </div>
+
+                <!-- Repository Selection -->
+                <div
+                    id="repositorySelection"
+                    class="repository-selection hidden">
+
+                    <label for="repositoryDropdown">
+                        Select Repository
+                    </label>
+
+                    <select id="repositoryDropdown">
+                        <option value="">
+                            Choose a repository
+                        </option>
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ZIP UPLOAD SOURCE -->
+        <div class="source-content hidden" id="uploadSource">
+
+            <label for="repositoryFile">
+                Upload Project ZIP
+            </label>
+
+            <div class="upload-area" id="uploadArea">
+
+                <div class="upload-icon">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+
+                <h3>Upload your project</h3>
+
+                <p>
+                    Select a ZIP file containing your source code.
+                </p>
+
+                <input
+                    type="file"
+                    id="repositoryFile"
+                    accept=".zip,application/zip"
+                    hidden
+                >
+
+                <button type="button" id="browseFileBtn">
+                    Browse Files
+                </button>
+
+                <p class="file-note">
+                    Maximum upload size: 1 GB
+                </p>
+
+                <p id="selectedFileName" class="selected-file">
+                    No file selected
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Analysis Configuration -->
+        <div class="analysis-options">
+
+            <div>
+                <h3>Analysis Configuration</h3>
+
+                <p>
+                    QualiTrack will identify applicable analysis tools
+                    based on your project's languages and structure.
+                </p>
+            </div>
+
+            <div class="config-tag">
+                <span></span>
+                Automatic Tool Selection
+            </div>
+
+        </div>
+
+        <!-- Feedback Message -->
+        <div
+            id="analysisMessage"
+            class="analysis-message">
+        </div>
+
+        <!-- Submit Button -->
+        <button
+            type="button"
+            id="analyzeRepositoryBtn"
+            class="analyze-button">
+
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+            Validate Repository
+
+        </button>
+
+        <p class="privacy-note">
+            Repository source and analysis results will be handled
+            according to QualiTrack's data storage policy.
+        </p>
+
+    </div>
+
+    <!-- Workflow Section -->
+    <div class="workflow-panel">
+
+        <h2>How QualiTrack Works</h2>
+
+        <div class="workflow-steps">
+
+            <div class="workflow-step">
+
+                <span>01</span>
+
+                <h3>Submit Repository</h3>
+
+                <p>
+                    Connect GitHub or upload your project ZIP file.
+                </p>
+
+            </div>
+
+            <div class="workflow-step">
+
+                <span>02</span>
+
+                <h3>Analyze Code</h3>
+
+                <p>
+                    Applicable quality analysis tools inspect
+                    your project.
+                </p>
+
+            </div>
+
+            <div class="workflow-step">
+
+                <span>03</span>
+
+                <h3>View Results</h3>
+
+                <p>
+                    Explore software quality metrics and
+                    improvement recommendations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

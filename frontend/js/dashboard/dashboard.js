@@ -1,7 +1,9 @@
 
 import { initializeNavigation } from "./navigation.js";
 import { initializeOverview } from "./overview.js";
-
+import { initializeAnalysis } from "./analysis.js";
+import { initializeMetrics } from "./metrics.js";
+import { initializeRecommendations } from "./recommendations.js";
 async function loadComponent(containerId, filePath) {
     const container = document.getElementById(containerId);
 
@@ -33,8 +35,18 @@ async function loadPage(pageName) {
         content.innerHTML = await response.text();
 
         if (pageName === "overview") {
-            initializeOverview();
-        }
+    initializeOverview();
+}
+
+if (pageName === "analysis") {
+    initializeAnalysis();
+}
+if (pageName === "metrics") {
+    initializeMetrics();
+}
+if (pageName === "recommendations") {
+    initializeRecommendations();
+}
 
     } catch (error) {
         console.error(error);

@@ -1,0 +1,251 @@
+
+<section class="metrics-page">
+
+    <!-- PAGE INTRO -->
+    <div class="metrics-welcome">
+        <div>
+            <span class="welcome-label">SOFTWARE QUALITY INSIGHTS</span>
+            <h1>Quality Metrics</h1>
+            <p>
+                Understand your software quality through measurable
+                indicators and detailed analysis.
+            </p>
+        </div>
+
+        <span class="metrics-demo-badge">
+            <i class="fa-solid fa-flask"></i>
+            DEMO DATA
+        </span>
+    </div>
+
+    <!-- OVERALL QUALITY -->
+    <div class="metrics-overall">
+
+        <div class="overall-score-card">
+            <div>
+                <span class="metric-label">OVERALL QUALITY SCORE</span>
+                <h2>Software Quality</h2>
+                <p>Combined quality assessment</p>
+            </div>
+
+            <div class="score-circle" data-score="82">
+                <div class="score-circle-inner">
+                    <strong id="overallScore">82</strong>
+                    <span>/ 100</span>
+                </div>
+            </div>
+
+            <div class="score-status">
+                <span class="status-dot"></span>
+                Good Quality
+            </div>
+        </div>
+
+        <div class="overall-summary">
+
+            <div class="metric-summary-card">
+                <span class="summary-icon purple">
+                    <i class="fa-solid fa-code"></i>
+                </span>
+                <div>
+                    <span>Maintainability</span>
+                    <h3>85<small>/100</small></h3>
+                </div>
+            </div>
+
+            <div class="metric-summary-card">
+                <span class="summary-icon blue">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </span>
+                <div>
+                    <span>Security</span>
+                    <h3>90<small>/100</small></h3>
+                </div>
+            </div>
+
+            <div class="metric-summary-card">
+                <span class="summary-icon orange">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </span>
+                <div>
+                    <span>Reliability</span>
+                    <h3>78<small>/100</small></h3>
+                </div>
+            </div>
+
+            <div class="metric-summary-card">
+                <span class="summary-icon green">
+                    <i class="fa-solid fa-diagram-project"></i>
+                </span>
+                <div>
+                    <span>Code Quality</span>
+                    <h3>80<small>/100</small></h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- DOMAIN QUALITY -->
+    <div class="metrics-section">
+
+        <div class="metrics-section-heading">
+            <div>
+                <h2>Quality by Domain</h2>
+                <p>Quality distribution across application components.</p>
+            </div>
+        </div>
+
+        <div class="domain-grid">
+
+            <div class="domain-card">
+                <div class="domain-heading">
+                    <span class="domain-icon purple">
+                        <i class="fa-solid fa-desktop"></i>
+                    </span>
+                    <span>Frontend</span>
+                    <strong>88%</strong>
+                </div>
+                <div class="metric-progress">
+                    <div class="progress-fill purple-fill" data-progress="88"></div>
+                </div>
+                <p>UI structure, code organization and maintainability.</p>
+            </div>
+
+            <div class="domain-card">
+                <div class="domain-heading">
+                    <span class="domain-icon blue">
+                        <i class="fa-solid fa-server"></i>
+                    </span>
+                    <span>Backend</span>
+                    <strong>82%</strong>
+                </div>
+                <div class="metric-progress">
+                    <div class="progress-fill blue-fill" data-progress="82"></div>
+                </div>
+                <p>Business logic, reliability and application security.</p>
+            </div>
+
+            <div class="domain-card">
+                <div class="domain-heading">
+                    <span class="domain-icon orange">
+                        <i class="fa-solid fa-database"></i>
+                    </span>
+                    <span>Database</span>
+                    <strong>76%</strong>
+                </div>
+                <div class="metric-progress">
+                    <div class="progress-fill orange-fill" data-progress="76"></div>
+                </div>
+                <p>Database structure, queries and data management.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CODE ANALYSIS METRICS -->
+    <div class="metrics-section">
+
+        <div class="metrics-section-heading">
+            <div>
+                <h2>Code Analysis Metrics</h2>
+                <p>Important indicators identified during repository analysis.</p>
+            </div>
+        </div>
+
+        <div class="analysis-metrics-grid">
+
+            <div class="analysis-metric-card">
+                <span class="analysis-metric-icon red">
+                    <i class="fa-solid fa-bug"></i>
+                </span>
+                <span>Code Issues</span>
+                <h3>24</h3>
+                <small>Issues requiring attention</small>
+            </div>
+
+            <div class="analysis-metric-card">
+                <span class="analysis-metric-icon orange">
+                    <i class="fa-solid fa-copy"></i>
+                </span>
+                <span>Code Duplication</span>
+                <h3>4.2<small>%</small></h3>
+                <small>Duplicated code percentage</small>
+            </div>
+
+            <div class="analysis-metric-card">
+                <span class="analysis-metric-icon purple">
+                    <i class="fa-solid fa-diagram-project"></i>
+                </span>
+                <span>Code Complexity</span>
+                <h3>12</h3>
+                <small>Average complexity indicator</small>
+            </div>
+
+            <div class="analysis-metric-card">
+                <span class="analysis-metric-icon green">
+                    <i class="fa-solid fa-clock"></i>
+                </span>
+                <span>Technical Debt</span>
+                <h3>6.5<small> hrs</small></h3>
+                <small>Estimated remediation effort</small>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- QUALITY DISTRIBUTION -->
+    <div class="metrics-section">
+
+        <div class="metrics-section-heading">
+            <div>
+                <h2>Quality Distribution</h2>
+                <p>Illustrative distribution of detected code issues.</p>
+            </div>
+        </div>
+
+        <div class="distribution-card">
+
+            <div class="distribution-row">
+                <div>
+                    <span class="distribution-dot critical"></span>
+                    Critical Issues
+                </div>
+                <strong>5</strong>
+            </div>
+            <div class="distribution-bar">
+                <div class="distribution-fill critical-fill" data-progress="20"></div>
+            </div>
+
+            <div class="distribution-row">
+                <div>
+                    <span class="distribution-dot major"></span>
+                    Major Issues
+                </div>
+                <strong>8</strong>
+            </div>
+            <div class="distribution-bar">
+                <div class="distribution-fill major-fill" data-progress="32"></div>
+            </div>
+
+            <div class="distribution-row">
+                <div>
+                    <span class="distribution-dot minor"></span>
+                    Minor Issues
+                </div>
+                <strong>11</strong>
+            </div>
+            <div class="distribution-bar">
+                <div class="distribution-fill minor-fill" data-progress="44"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <p class="metrics-disclaimer">
+        <i class="fa-solid fa-circle-info"></i>
+        Demonstration values only. Actual metrics will be displayed
+        after a repository has been successfully analyzed.
+    </p>
+
+</section>

@@ -1,0 +1,257 @@
+
+<section class="recommendations-page">
+
+    <div class="recommendations-welcome">
+        <div>
+            <p class="welcome-label">QUALITY IMPROVEMENT</p>
+            <h1>Recommendations</h1>
+            <p class="recommendations-description">
+                Get actionable suggestions to improve your project's
+                code quality, security, reliability, and maintainability.
+            </p>
+        </div>
+
+        <div class="recommendation-status">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span>DEMO RECOMMENDATIONS</span>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="recommendation-summary">
+
+        <div class="recommendation-stat">
+            <div class="stat-icon purple">
+                <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div>
+                <h3 id="totalRecommendations">6</h3>
+                <p>Total Suggestions</p>
+            </div>
+        </div>
+
+        <div class="recommendation-stat">
+            <div class="stat-icon red">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div>
+                <h3 id="highPriorityCount">2</h3>
+                <p>High Priority</p>
+            </div>
+        </div>
+
+        <div class="recommendation-stat">
+            <div class="stat-icon green">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+                <h3 id="completedCount">0</h3>
+                <p>Marked Completed</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Filters -->
+    <div class="recommendation-toolbar">
+        <div>
+            <h2>Suggested Improvements</h2>
+            <p>Review each suggestion and track your progress.</p>
+        </div>
+
+        <div class="recommendation-filters">
+            <button class="recommendation-filter active" data-filter="all">
+                All
+            </button>
+            <button class="recommendation-filter" data-filter="high">
+                High
+            </button>
+            <button class="recommendation-filter" data-filter="medium">
+                Medium
+            </button>
+            <button class="recommendation-filter" data-filter="low">
+                Low
+            </button>
+        </div>
+    </div>
+
+    <!-- Recommendation Cards -->
+    <div class="recommendation-list">
+
+        <article class="recommendation-card"
+                 data-priority="high">
+
+            <div class="recommendation-card-top">
+                <span class="recommendation-category security">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Security
+                </span>
+                <span class="priority-badge high">High Priority</span>
+            </div>
+
+            <h3>Review insecure input handling</h3>
+            <p>
+                Validate and sanitize user inputs before processing them
+                to reduce the risk of injection and unexpected input.
+            </p>
+
+            <div class="recommendation-meta">
+                <span><i class="fa-solid fa-wrench"></i> Input validation</span>
+                <span><i class="fa-solid fa-clock"></i> Estimated: 1–2 hours</span>
+            </div>
+
+            <button class="mark-completed">
+                <i class="fa-regular fa-circle-check"></i>
+                Mark as Completed
+            </button>
+        </article>
+
+        <article class="recommendation-card"
+                 data-priority="high">
+
+            <div class="recommendation-card-top">
+                <span class="recommendation-category reliability">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    Reliability
+                </span>
+                <span class="priority-badge high">High Priority</span>
+            </div>
+
+            <h3>Improve exception handling</h3>
+            <p>
+                Handle unexpected exceptions properly and avoid exposing
+                internal error details to end users.
+            </p>
+
+            <div class="recommendation-meta">
+                <span><i class="fa-solid fa-wrench"></i> Error handling</span>
+                <span><i class="fa-solid fa-clock"></i> Estimated: 2–3 hours</span>
+            </div>
+
+            <button class="mark-completed">
+                <i class="fa-regular fa-circle-check"></i>
+                Mark as Completed
+            </button>
+        </article>
+
+        <article class="recommendation-card"
+                 data-priority="medium">
+
+            <div class="recommendation-card-top">
+                <span class="recommendation-category maintainability">
+                    <i class="fa-solid fa-code"></i>
+                    Maintainability
+                </span>
+                <span class="priority-badge medium">Medium Priority</span>
+            </div>
+
+            <h3>Reduce duplicated code</h3>
+            <p>
+                Identify repeated code blocks and extract reusable
+                methods or components to improve maintainability.
+            </p>
+
+            <div class="recommendation-meta">
+                <span><i class="fa-solid fa-wrench"></i> Code refactoring</span>
+                <span><i class="fa-solid fa-clock"></i> Estimated: 2–4 hours</span>
+            </div>
+
+            <button class="mark-completed">
+                <i class="fa-regular fa-circle-check"></i>
+                Mark as Completed
+            </button>
+        </article>
+
+        <article class="recommendation-card"
+                 data-priority="medium">
+
+            <div class="recommendation-card-top">
+                <span class="recommendation-category performance">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    Performance
+                </span>
+                <span class="priority-badge medium">Medium Priority</span>
+            </div>
+
+            <h3>Optimize database queries</h3>
+            <p>
+                Review frequently executed queries and consider
+                appropriate indexing to improve database performance.
+            </p>
+
+            <div class="recommendation-meta">
+                <span><i class="fa-solid fa-wrench"></i> Query optimization</span>
+                <span><i class="fa-solid fa-clock"></i> Estimated: 1–3 hours</span>
+            </div>
+
+            <button class="mark-completed">
+                <i class="fa-regular fa-circle-check"></i>
+                Mark as Completed
+            </button>
+        </article>
+
+        <article class="recommendation-card"
+                 data-priority="low">
+
+            <div class="recommendation-card-top">
+                <span class="recommendation-category maintainability">
+                    <i class="fa-solid fa-file-lines"></i>
+                    Maintainability
+                </span>
+                <span class="priority-badge low">Low Priority</span>
+            </div>
+
+            <h3>Improve code documentation</h3>
+            <p>
+                Add meaningful comments and documentation for complex
+                methods, classes, and important application logic.
+            </p>
+
+            <div class="recommendation-meta">
+                <span><i class="fa-solid fa-wrench"></i> Documentation</span>
+                <span><i class="fa-solid fa-clock"></i> Estimated: 1 hour</span>
+            </div>
+
+            <button class="mark-completed">
+                <i class="fa-regular fa-circle-check"></i>
+                Mark as Completed
+            </button>
+        </article>
+
+        <article class="recommendation-card"
+                 data-priority="low">
+
+            <div class="recommendation-card-top">
+                <span class="recommendation-category quality">
+                    <i class="fa-solid fa-vial"></i>
+                    Code Quality
+                </span>
+                <span class="priority-badge low">Low Priority</span>
+            </div>
+
+            <h3>Increase unit test coverage</h3>
+            <p>
+                Add unit tests for important methods and edge cases
+                to improve confidence in future code changes.
+            </p>
+
+            <div class="recommendation-meta">
+                <span><i class="fa-solid fa-wrench"></i> Unit testing</span>
+                <span><i class="fa-solid fa-clock"></i> Estimated: 2–3 hours</span>
+            </div>
+
+            <button class="mark-completed">
+                <i class="fa-regular fa-circle-check"></i>
+                Mark as Completed
+            </button>
+        </article>
+
+    </div>
+
+    <div class="recommendation-disclaimer">
+        <i class="fa-solid fa-circle-info"></i>
+        These are sample recommendations for the dashboard demo.
+        Actual suggestions will be generated from repository analysis results.
+    </div>
+
+</section>
