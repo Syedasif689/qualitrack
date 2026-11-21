@@ -11,12 +11,17 @@ $("currentYear").textContent = new Date().getFullYear();
 
 const registerForm = $("registerForm");
 
+// =========================================================
+// PASSWORD VISIBILITY
+// =========================================================
+
 function attachPasswordToggle(inputId, buttonId) {
     const input = $(inputId);
     const button = $(buttonId);
 
     button.addEventListener("click", () => {
         const showing = input.type === "text";
+
         input.type = showing ? "password" : "text";
         button.textContent = showing ? "Show" : "Hide";
 
@@ -32,6 +37,10 @@ function attachPasswordToggle(inputId, buttonId) {
 attachPasswordToggle("password", "passwordToggle");
 attachPasswordToggle("confirmPassword", "confirmToggle");
 
+// =========================================================
+// FIELD ERROR HANDLING
+// =========================================================
+
 function setError(inputId, errorId, message) {
     const input = $(inputId);
     $(errorId).textContent = message;
@@ -43,9 +52,17 @@ function setError(inputId, errorId, message) {
     }
 }
 
+// =========================================================
+// EMAIL VALIDATION
+// =========================================================
+
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
+
+// =========================================================
+// PASSWORD STRENGTH
+// =========================================================
 
 function passwordScore(password) {
     let score = 0;
@@ -81,9 +98,14 @@ function updateStrength() {
 
 $("password").addEventListener("input", updateStrength);
 
+// =========================================================
+// REGISTRATION FORM SUBMISSION
+// =========================================================
+
 registerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    // Clear previous errors
     const fields = {
         fullName: "nameError",
         email: "emailError",
@@ -98,6 +120,7 @@ registerForm.addEventListener("submit", async (event) => {
     $("termsError").textContent = "";
     $("formMessage").textContent = "";
 
+    // Get form values
     const name = $("fullName").value.trim();
     const email = $("email").value.trim();
     const password = $("password").value;
@@ -105,6 +128,7 @@ registerForm.addEventListener("submit", async (event) => {
 
     let valid = true;
 
+    // Name validation
     if (name.length < 2) {
         setError(
             "fullName",
@@ -114,14 +138,24 @@ registerForm.addEventListener("submit", async (event) => {
         valid = false;
     }
 
+    // Email validation
     if (!email) {
-        setError("email", "emailError", "Please enter your email address.");
+        setError(
+            "email",
+            "emailError",
+            "Please enter your email address."
+        );
         valid = false;
     } else if (!isValidEmail(email)) {
-        setError("email", "emailError", "Enter a valid email address.");
+        setError(
+            "email",
+            "emailError",
+            "Enter a valid email address."
+        );
         valid = false;
     }
 
+    // Password validation
     if (
         password.length < 8 ||
         password.length > 72 ||
@@ -137,6 +171,7 @@ registerForm.addEventListener("submit", async (event) => {
         valid = false;
     }
 
+    // Confirm password validation
     if (!confirmPassword) {
         setError(
             "confirmPassword",
@@ -153,68 +188,121 @@ registerForm.addEventListener("submit", async (event) => {
         valid = false;
     }
 
+    // Terms validation
     if (!$("acceptTerms").checked) {
         $("termsError").textContent =
             "Please accept the Terms of Service and Privacy Policy.";
+
         valid = false;
     }
 
     if (!valid) return;
 
+    // Disable submit button during API request
     const submitButton = registerForm.querySelector(
         'button[type="submit"]'
     );
 
-    if (submitButton) submitButton.disabled = true;
+    if (submitButton) {
+        submitButton.disabled = true;
+    }
 
     $("formMessage").textContent = "Creating your account...";
 
     try {
-        const response = await fetch(`${API_BASE_URL}/auth/register`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fullName: name,
-                email,
-                password
-            })
-        });
+        // Send registration request to Spring Boot
+        const response = await fetch(
+            `${API_BASE_URL}/auth/register`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fullName: name,
+                    email: email,
+                    password: password
+                })
+            }
+        );
 
-        const data = await response.json();
+        // Safely read backend response
+        const responseText = await response.text();
 
+        let data = {};
+
+        try {
+            data = responseText ? JSON.parse(responseText) : {};
+        } catch {
+            data = {};
+        }
+
+        // Handle backend errors
         if (!response.ok) {
+
+            if (response.status === 409) {
+                throw new Error(
+                    "This email is already registered. Please log in or use another email."
+                );
+            }
+
+            if (response.status === 400) {
+                throw new Error(
+                    data.message ||
+                    "Please check your registration details."
+                );
+            }
+
+            if (response.status === 403) {
+                throw new Error(
+                    "Access denied. Check your backend security and CORS configuration."
+                );
+            }
+
             throw new Error(
                 data.message ||
                 data.detail ||
-                "Unable to create your account."
+                `Registration failed (HTTP ${response.status}).`
             );
         }
 
+        // Successful registration
         $("formMessage").textContent =
-            "Account created successfully! Please log in.";
+            data.message || "Account created successfully! Please log in.";
 
-        // Registration does not automatically log the user in.
         registerForm.reset();
         updateStrength();
 
     } catch (error) {
+        console.error("Registration error:", error);
+
         $("formMessage").textContent =
             error.message || "Unable to connect to the server.";
+
     } finally {
-        if (submitButton) submitButton.disabled = false;
+        if (submitButton) {
+            submitButton.disabled = false;
+        }
     }
 });
 
-// Google OAuth is not implemented yet.
+// =========================================================
+// GOOGLE SIGN-UP PLACEHOLDER
+// =========================================================
+
 $("googleButton").addEventListener("click", () => {
     $("formMessage").textContent =
         "Google sign-up will be enabled after OAuth integration.";
 });
 
+// =========================================================
+// CLEAR FIELD ERRORS WHILE TYPING
+// =========================================================
+
 ["fullName", "email", "password", "confirmPassword"].forEach((id) => {
+
     $(id).addEventListener("input", () => {
+
         const errorId = {
             fullName: "nameError",
             email: "emailError",
@@ -227,6 +315,10 @@ $("googleButton").addEventListener("click", () => {
         }
     });
 });
+
+// =========================================================
+// CLEAR TERMS ERROR
+// =========================================================
 
 $("acceptTerms").addEventListener("change", () => {
     $("termsError").textContent = "";
